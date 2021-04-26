@@ -1,7 +1,7 @@
 #include <QtTest>
 
-#include "stego/abstractencoder.hpp"
-#include "stego/kutter.hpp"
+#include "abstractencoder.hpp"
+#include "kutter.hpp"
 
 using namespace Stg;
 

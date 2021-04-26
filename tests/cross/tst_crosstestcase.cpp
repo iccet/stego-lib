@@ -1,6 +1,6 @@
 #include <QtTest>
 
-#include "stego/cross.hpp"
+#include "cross.hpp"
 
 using namespace Stg;
 

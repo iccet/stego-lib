@@ -1,6 +1,6 @@
 #include <QtTest>
 
-#include "stego/skip.hpp"
+#include "skip.hpp"
 
 using namespace Stg;
 
