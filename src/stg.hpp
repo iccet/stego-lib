@@ -5,27 +5,32 @@
 #include <QtGlobal>
 #include <QString>
 
+#include "lsb.hpp"
+#include "kutter.hpp"
+
 namespace Stg
 {
-    class Stg
+    class Stg : QObject
     {
+		Q_OBJECT
+
     public:
+		enum class EncoderType : size_t
+		{
+			Lsb,
+			Kutter,
+			Default = Lsb,
+		};
+		Q_ENUM(EncoderType);
+
         Stg();
     };
 
     template<typename T>
-    bool encode(const char *data, uchar *container, int32_t size)
-    {
-        return T().T::Base::encode(data, container, size);
-    }
+    bool encode(const char *data, uchar *container, int32_t size);
 
     template<typename T>
-    int32_t decode(const uchar *container, int32_t size, const char *&data)
-    {
-        auto decoded = QString(T().T::Base::decode(container, size).data());
-        data = decoded.toLocal8Bit().data();
-        return decoded.length();
-    }
+    int32_t decode(const uchar *container, int32_t size, const char *&data);
 
 } // namespace Stg
 
