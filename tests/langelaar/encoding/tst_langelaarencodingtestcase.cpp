@@ -1,5 +1,7 @@
 #include <QtTest>
 
+#include <random>
+
 #include "langelaar.hpp"
 
 using namespace Stg;
@@ -39,10 +41,12 @@ void LangelaarEncodingTestCase::initTestCase() {
 void LangelaarEncodingTestCase::encodingTestCase_data()
 {
     QTest::addColumn<QByteArray>("container");
+    auto container = QByteArray(8 * 8 * 100, 0);
 
-    QTest::newRow("Empty container") << QByteArray(1000, 0);
-    QTest::newRow("Filled container") << QByteArray(1000, 0xf1);
-    QTest::newRow("Random byte container") << QByteArray(1000, QRandomGenerator::global()->generate());
+    std::generate(container.begin(), container.end(),
+        []() { return QRandomGenerator::global()->generate(); });
+
+    QTest::newRow("Random container") << container;
 }
 
 void LangelaarEncodingTestCase::encodingTestCase()
